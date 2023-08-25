@@ -1,0 +1,24 @@
+<script setup>
+
+    const {title, icon} = defineProps({
+        title: String,
+        icon: String
+    })
+
+</script>
+
+<template>
+
+    <a class='flex justify-center items-center gap-2 w-24 h-full p-4 rounded-lg bg-dark-blue-custom'>
+        <h5 class='text text-sm text-light-grey-custom'>{{ title }}</h5>
+        <img v-if="icon" :src="icon" class='max-w-none'/>
+    </a>
+    
+</template>
+
+<style scoped>
+
+    .text {
+        font-family: Inter-SemiBold;
+    }
+</style>
