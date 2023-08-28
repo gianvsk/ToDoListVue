@@ -1,15 +1,11 @@
 <script setup>
 
-const { text, size, todo } = defineProps({
+const {text, size, actualToDo, endedToDo} = defineProps({
     text: String,
-    size: 'small' | 'default',
-    todo: {
-        actualToDo: Number,
-        endedToDo: Number
-    }
+    size: String,
+    actualToDo: Number,
+    endedToDo: Number
 })
-
-const { actualToDo = 0, endedToDo = 0 } = todo
 
 </script>
 
@@ -23,7 +19,7 @@ const { actualToDo = 0, endedToDo = 0 } = todo
             {{ text }}
         </span>
         <span class='py-0.5 px-2 rounded-full bg-dark-grey-custom text text-xs text-grey-custom'>
-            {{ size === 'small' ? actualToDo.toString() : endedToDo.toString() + ' de ' + actualToDo.toString() }}
+            {{ size === 'small' ? actualToDo : endedToDo + ' de ' + actualToDo}}
         </span>
     </div>
 </template>
