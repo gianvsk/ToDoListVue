@@ -3,10 +3,10 @@ import { ref, watch } from 'vue';
 
 const text = ref('')
 
-const event = defineEmits(['ciao'])
+const event = defineEmits(['showText'])
 
 const showText = () => {
-    event('ciao', text.value)
+    event('showText', text.value)
 }
 
 watch(text, showText)
