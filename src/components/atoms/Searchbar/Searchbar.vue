@@ -3,13 +3,13 @@ import { ref, watch } from 'vue';
 
 const text = ref('')
 
-const event = defineEmits(['showText'])
+const emitter = defineEmits(['showText'])
 
-const showText = () => {
-    event('showText', text.value)
+const sendText = () => {
+    emitter('showText', text)
 }
 
-watch(text, showText)
+watch(text, sendText)
 
 </script>
 
@@ -23,6 +23,5 @@ watch(text, showText)
 <style scoped>
 .text {
     font-family: Inter-Regular;
-    color: rgba(128, 128, 128, 1)
 }
 </style>

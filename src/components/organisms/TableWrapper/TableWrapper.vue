@@ -2,42 +2,40 @@
 
 import Table from '../../molecules/Table/Table.vue';
 import Counter from '../../atoms/Counter/Counter.vue';
-import { ref } from 'vue';
 
-const { todos, actualToDo, endedToDo, check } = defineProps({
+const { todos, actualToDo, endedToDo } = defineProps({
     todos: Array,
     actualToDo: Number,
-    endedToDo: Number,
-    check: Boolean
+    endedToDo: Number
 })
 
-const emitter = defineEmits(['eventDelete', 'eventHandler'])
-const deleteHandler = () => {
-    emitter('eventDelete', idDeletedTodo)
+const emitter = defineEmits(['sendTodoId', 'checkTodo'])
+
+const getId = (id) => {
+    emitter('sendTodoId', id)
 }
 
-const eventHandler = (id) => {
-    emitter('eventHandler', id)
-    console.log('id 2 - ', id)
+const getCheck = (id) => {
+    emitter('checkTodo', id)
 }
 
 </script>
 
 <template>
-    <div :class="'flex flex-col justify-between gap-3'">
-        <div :class="'flex justify-between'">
-            <Counter :text="'Tarefas criadas'" :size="'small'" :actualToDo="actualToDo" />
-            <Counter :text="'Concluídas'" :size="'default'" :actualToDo="actualToDo" :endedToDo="endedToDo" />
+    <div class='flex flex-col justify-between gap-3'>
+        <div class='flex justify-between'>
+            <Counter text='Tarefas criadas' size='small' :actualToDo="actualToDo" />
+            <Counter text='Concluídas' size='default' :actualToDo="actualToDo" :endedToDo="endedToDo" />
         </div>
-        <div v-for="(todo, index) in todos" class="flex flex-col gap-3">
-            <Table :key="index" 
+        <div v-for="todo in todos" class="flex flex-col gap-3">
+            <Table :key="todo.id" 
                    :text="todo.text" 
                    :idTodo="todo.id"
-                   :check="todo.check" 
                    :source1="'/images/layer1.svg'"
                    :source2="'/images/layer2.svg'"
                    :checked="todo.check" 
-                    @deleteTodo="eventHandler" />
+                    @delete-todo="getId"
+                    @check-todo="getCheck" />
         </div>
     </div>
 </template>

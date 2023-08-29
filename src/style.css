@@ -77,17 +77,17 @@ button:focus-visible {
 
 @font-face {
   font-family: Inter-Regular;
-  src: url('./font/Inter-Regular.woff');
+  src: url('/public/font/Inter-Regular.woff');
 }
 
 @font-face {
   font-family: Inter-SemiBold;
-  src: url('./font/Inter-SemiBold.woff');
+  src: url('/public/font/Inter-SemiBold.woff');
 }
 
 @font-face {
   font-family: Inter-Black;
-  src: url('./font/Inter-Black.woff');
+  src: url('/public/font/Inter-Black.woff');
 }
 
 @media (prefers-color-scheme: light) {
