@@ -14,10 +14,8 @@ watch(text, sendText)
 </script>
 
 <template>
-    <form id='form' for='form' class='w-full'>
         <input id='searchbar' name='searchbar' type='text' class='w-full p-4 rounded-lg text text-base text-white'
             placeholder='Adicione uma nova tarefa' v-model="text" />
-    </form>
 </template>
 
 <style scoped>
